@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Anniversary, Baby!</title>
+    <style>
+        :root {
+            --pink: #ffafbd;
+            --rose: #ffc3a0;
+            --accent: #d4418e;
+            --glass: rgba(255, 255, 255, 0.9);
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, var(--pink), var(--rose));
+            background-attachment: fixed;
+            color: #444;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* Entry Screen to bypass browser autoplay blocks */
+        #entry-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--pink), var(--rose));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 1s ease;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--glass);
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            margin: 0 20px;
+            text-decoration: none;
+            color: var(--accent);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        section {
+            min-height: 100vh;
+            padding: 120px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .card {
+            background: var(--glass);
+            padding: 40px;
+            border-radius: 30px;
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        #timer {
+            font-size: 1.2rem;
+            color: var(--accent);
+            font-weight: bold;
+            margin-top: 15px;
+            letter-spacing: 1px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .photo-only-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .gallery-item, .photo-only-grid img {
+            background: white;
+            padding: 12px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+        }
+
+        .photo-only-grid img {
+            padding: 8px;
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .gallery-item:hover, .photo-only-grid img:hover {
+            transform: rotate(-2deg) translateY(-10px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            background: #eee;
+        }
+
+        h1 { font-size: 3rem; color: var(--accent); margin-bottom: 0.5rem; }
+        h2 { color: var(--accent); font-size: 2.2rem; }
+        p { line-height: 1.8; font-size: 1.1rem; color: #555; }
+
+        .btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s, background 0.3s;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(212, 65, 142, 0.3);
+        }
+
+        .btn:hover { 
+            background: #b03072; 
+            transform: scale(1.05);
+        }
+
+        /* Hide the actual audio player so it plays "in the background" */
+        #music-player {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="entry-screen">
+        <h1 style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">Hiiii PIZAAAAAA ... ❤️</h1>
+        <button class="btn" onclick="playWithLove()">hiiiii</button>
+    </div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#gallery">Memories</a>
+        <a href="#more-photos">Photos</a>
+        <a href="#future">The Future</a>
+    </nav>
+
+    <audio id="music-player" loop>
+        <source src="your-song.mp3" type="audio/mpeg">
+    </audio>
+
+    <section id="home">
+        <div class="card">
+            <div style="font-size: 40px;">✨</div>
+            <h1>Happy 1 Year, Baby!</h1>
+            <p>Every single day with you is my favorite day.</p>
+            <div id="timer">Calculating our time...</div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div class="card">
+            <h2>365 Days of Memories</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="photo1.jpg" alt="Memory 1">
+                    <p>First Date of My Life</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="photo2.jpg" alt="Memory 2">
+                    <p>Best moments of my life</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="photo3.jpg" alt="Memory 3">
+                    <p>hehehehe</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="more-photos">
+        <div class="card">
+            <h2>I Love youuuu sooo muchhhhh</h2>
+            <div class="photo-only-grid">
+                <img src="photo4.jpg" alt="Moment">
+                <img src="photo5.jpg" alt="Moment">
+                <img src="photo6.jpg" alt="Moment">
+                <img src="photo7.jpg" alt="Moment">
+                <img src="photo8.jpg" alt="Moment">
+                <img src="photo9.jpg" alt="Moment">
+            </div>
+        </div>
+    </section>
+
+    <section id="future">
+        <div class="card">
+            <h2>100 Years More to go😘</h2>
+            <p>I’m so proud of everything we've built this year Baby. You are my best friend and my greatest adventure. I can't wait to see what Year Two brings for usc.Iam truly blessed to have you in my life. To my favorite person in the world, Happy Anniversary. Looking back at our year together feels like flipping through a book where every page is better than the last. You have become my safe place my loudest laugh and my greatest adventure all at once. Whether we are doing something big or just sitting in silence life is simply better because you are in it. Thank you for choosing me every single day I love you more than words can say. Love you forever🥰🥰🥰</p>
+            <button class="btn" onclick="alert('You are the best thing that ever happened to me!')">Click for a Surprise</button>
+        </div>
+    </section>
+
+    <script>
+        const startDate = new Date(2025, 0, 31, 0, 0, 0); 
+
+        function updateTimer() {
+            const now = new Date();
+            const diff = now - startDate;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const mins = Math.floor((diff / (1000 * 60)) % 60);
+            const secs = Math.floor((diff / 1000) % 60);
+            document.getElementById('timer').innerHTML = 
+                `${days} Days, ${hours} Hours, ${mins} Minutes, and ${secs} Seconds Together`;
+        }
+
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+        function playWithLove() {
+            const audio = document.getElementById('music-player');
+            const entry = document.getElementById('entry-screen');
+            
+            // Set start time to 48 seconds ("Take my hand")
+            audio.currentTime = 48;
+            audio.play();
+            
+            // Fade out entry screen
+            entry.style.opacity = '0';
+            setTimeout(() => {
+                entry.style.display = 'none';
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
